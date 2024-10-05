@@ -31,9 +31,12 @@ def main():
     parser = argparse.ArgumentParser(description="Calculate and sort sizes of files and folders")
     parser.add_argument("directory", help="Directory to scan")
     parser.add_argument("-n", type=int, help="Show top n largest files", default=None)
-
+    parser.add_argument("-m", type=int, help="Show files with size > m MB", default=None)
     args = parser.parse_args()
+    
     files_and_folders = list_files_and_folders(args.directory)
+    if args.m is not None:
+        files_and_folders = [(path, size) for path, size in files_and_folders if size >= args.m * 1024 * 1024]
 
     if args.n:
         files_and_folders = files_and_folders[:args.n]
