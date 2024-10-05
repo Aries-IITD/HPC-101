@@ -22,6 +22,18 @@ Let's understand the command a little but.
 - lwalltime - you can request for a maximum of 168 hours on standard and high queue GPUs. 24 hours for scai_q A100s
 -  -I : Interactive job
 
+## Monitoring Jobs and Job Requests
+
+To check the time reamining in your job
+
+```console
+qstat -u $USER
+```
+
+To check the exepcted time before your job starts
+```console
+qstat -u $USER -T
+```
 ## Cheat code to avoid getting banned
 
 ```console
